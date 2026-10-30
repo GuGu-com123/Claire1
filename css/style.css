@@ -1,0 +1,425 @@
+/* ============================================================
+   CLAIRE 作品集网页 —— 样式表
+   设计稿尺寸：每屏 1550 x 968 像素
+   配色来自设计稿：
+   深蓝 #263BD7 / 中蓝 #7F96F2 / 浅蓝 #ADBAF3 / 白 #FFFFFF
+   ============================================================ */
+
+/* ---------- 全局 ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #444242;          /* 页面四周用 Figma 画布的深灰底色 */
+  color: #263BD7;
+}
+
+h1, h2, h3 { font-family: "Poppins", "Inter", sans-serif; }
+
+/* 每一“屏”都是一个 1550 x 968 的画板，居中显示 */
+.screen {
+  position: relative;
+  width: 1550px;
+  height: 968px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* ---------- 右上角通用按钮（语言切换 + 设置） ---------- */
+.topbar {
+  position: absolute;
+  top: 66px;
+  right: 90px;
+  display: flex;
+  gap: 18px;
+  z-index: 20;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(38, 59, 215, 0.35);
+  background: #ffffff;
+  color: #263BD7;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+.btn svg { width: 17px; height: 17px; }
+
+/* ============================================================
+   第 1 页：封面（WORK COLLECTION）
+   ============================================================ */
+.screen-cover {
+  background: linear-gradient(90deg, #263BD7 0%, #263BD7 50%, #ffffff 50%, #ffffff 100%);
+}
+
+/* 左上角提示文字（在深蓝一边） */
+.cover-note {
+  position: absolute;
+  top: 70px;
+  left: 90px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 500;
+  z-index: 20;
+}
+
+/* 浅蓝弧形流线（衬在标题后面，让蓝字有底色） */
+.cover-arc {
+  position: absolute;
+  left: 90px;
+  top: 190px;
+  width: 920px;
+  height: 400px;
+  z-index: 1;
+}
+
+/* 标题区 */
+.cover-title {
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+.cover-title .word-work {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 112px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+}
+/* WORK 的后两个字母 R K 落在白色背景上，改成蓝色才能看清 */
+.cover-title .work-rk {
+  color: #263BD7;
+}
+.cover-title .word-collection {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 118px;
+  font-weight: 800;
+  color: #263BD7;
+  /* 白色描边：让蓝字在深蓝背景上也能看清（设计稿的标题就是这种描边效果） */
+  -webkit-text-stroke: 2px #ffffff;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* 星形装饰 */
+.star { position: absolute; z-index: 4; }
+.star-white { position: absolute; z-index: 4; }
+
+/* 底部几何图形装饰 */
+.cover-shapes {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 220px;
+  z-index: 3;
+}
+
+/* ============================================================
+   第 2 页：首页导航（ABOUT / WORK）
+   ============================================================ */
+.screen-nav { background: #ffffff; }
+
+.nav-card {
+  position: absolute;
+  top: 140px;
+  width: 630px;
+  height: 690px;
+  border-radius: 40px;
+  background: #263BD7;
+  color: #ffffff;
+  padding: 56px 56px 48px;
+  text-decoration: none;   /* 去掉链接下划线 */
+  display: block;          /* 让卡片整块可以点击 */
+  cursor: pointer;
+}
+
+/* 点击跳转卡片时变白，和拖拽效果一致 */
+.nav-card:active {
+  background: #ffffff;
+}
+.nav-card:active h2 { color: #263BD7; }
+
+.nav-card-left  { left: 90px; }
+.nav-card-right { right: 90px; }
+
+.nav-card img {
+  width: 100%;
+  border-radius: 28px;
+  display: block;
+}
+
+/* 左侧卡片：剪影 + ABOUT */
+.nav-card-left img { margin-bottom: 40px; }
+
+/* 右侧卡片：WORK 标题 + 工具插画 */
+.nav-card-right .nav-work {
+  font-family: "Poppins", sans-serif;
+  font-size: 84px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin: 0 0 36px;
+}
+.nav-card-right img { margin-top: auto; }
+
+.nav-about {
+  font-family: "Poppins", sans-serif;
+  font-size: 76px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin: 0 0 24px;
+}
+
+/* ============================================================
+   第 3 页：关于我（CLAIRE）
+   ============================================================ */
+.screen-about { background: #7F96F2; }
+
+/* 左侧：CLAIRE 标题 + 自我介绍 */
+.about-name {
+  position: absolute;
+  left: 110px;
+  top: 120px;
+  font-family: "Poppins", sans-serif;
+  font-size: 120px;
+  font-weight: 800;
+  color: #263BD7;
+  letter-spacing: 0.04em;
+  z-index: 5;
+}
+.about-text {
+  position: absolute;
+  left: 112px;
+  top: 360px;
+  width: 690px;
+  font-size: 24px;
+  line-height: 1.6;
+  color: #263BD7;
+  font-weight: 500;
+  z-index: 5;
+}
+
+/* 右侧：卡通人物（原图素材） */
+.about-character {
+  position: absolute;
+  right: 55px;
+  top: 70px;
+  height: 870px;
+  z-index: 6;
+}
+
+/* 星星 / 云朵装饰 */
+.about-deco { position: absolute; z-index: 2; }
+
+/* ============================================================
+   第 4 页：作品列表（三个项目）
+   ============================================================ */
+.screen-work { background: #263BD7; }
+
+.work-card {
+  position: absolute;
+  background: #7F96F2;
+  border-radius: 30px;
+  color: #263BD7;
+  padding: 38px 42px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.2s ease;
+  z-index: 5;
+  text-decoration: none;   /* 去掉链接下划线 */
+}
+.work-card:hover { transform: scale(1.03); }
+
+/* 正在被拖动：卡片变白色，代表用户交互 */
+.work-card.dragging {
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(38, 59, 215, 0.28);
+  cursor: grabbing;
+  z-index: 30;
+  transform: none;
+}
+
+.work-card h3 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.work-card p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.9;
+  max-width: 360px;
+}
+.work-card .work-arrow {
+  position: absolute;
+  right: 34px;
+  bottom: 30px;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+/* 三个卡片的位置（从设计稿里量出来的） */
+.card-sketch {
+  left: 130px;
+  top: 610px;
+  width: 420px;
+}
+.card-water {
+  left: 505px;
+  top: 200px;
+  width: 440px;
+}
+.card-physics {
+  left: 950px;
+  top: 190px;
+  width: 470px;
+}
+
+/* 背景几何装饰 */
+.work-deco { position: absolute; z-index: 1; }
+
+/* ============================================================
+   第 5 页：项目详情（物理电气小屋）
+   ============================================================ */
+.screen-project { background: #ffffff; }
+
+/* 左侧不规则蓝色背景块 */
+.project-blob {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 420px;
+  height: 968px;
+  z-index: 1;
+}
+
+/* 左侧大标题（蓝色文字，放在白色区域，避免像图片一样有方框） */
+.project-title-text {
+  position: absolute;
+  left: 470px;
+  top: 105px;
+  font-family: "Poppins", sans-serif;
+  font-size: 116px;
+  font-weight: 800;
+  color: #263BD7;
+  letter-spacing: 0.03em;
+  z-index: 6;
+}
+
+/* 中间项目介绍文字（放在白色区域，避开左侧蓝色背景和右侧照片，保证看得清） */
+.project-desc {
+  position: absolute;
+  left: 500px;
+  top: 470px;
+  width: 600px;
+  font-size: 24px;
+  line-height: 1.6;
+  color: #263BD7;
+  font-weight: 500;
+  z-index: 6;
+}
+
+/* 右侧两张实物照片（原图素材，白色背景已抠掉，不会挡住文字） */
+.project-photo1 {
+  position: absolute;
+  right: 120px;
+  top: 120px;
+  width: 470px;
+  border-radius: 24px;
+  z-index: 6;
+}
+.project-photo2 {
+  position: absolute;
+  right: 120px;
+  top: 505px;
+  width: 315px;
+  border-radius: 24px;
+  z-index: 6;
+}
+
+/* 左侧返回箭头（点击回作品列表） */
+.back-arrow {
+  position: absolute;
+  left: 40px;
+  top: 430px;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 6px 20px rgba(38, 59, 215, 0.18);
+}
+.back-arrow svg { width: 40px; height: 40px; color: #263BD7; }
+
+/* ============================================================
+   第 6 页：结尾（TO BE CONTINUED）
+   ============================================================ */
+.screen-end { background: #ffffff; }
+
+/* 蓝白渐变的大标题（设计稿里是两行大字） */
+.end-title {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 148px;
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: 0.05em;
+  background: linear-gradient(100deg, #263BD7 20%, #7F96F2 50%, #263BD7 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 5;
+}
+
+/* 鲸鱼（原图素材） */
+.end-whale {
+  position: absolute;
+  left: 50%;
+  top: 555px;
+  transform: translateX(-50%);
+  width: 680px;
+  z-index: 5;
+}
+
+/* 右下角邮箱 */
+.end-mail {
+  position: absolute;
+  right: 100px;
+  bottom: 58px;
+  font-size: 21px;
+  font-weight: 500;
+  color: #263BD7;
+  z-index: 5;
+}
+
+/* 左下角几何装饰 */
+.end-shapes {
+  position: absolute;
+  left: 100px;
+  bottom: 55px;
+  z-index: 2;
+}
